@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Task } from '@/types/task';
 import { Button } from '@/components/ui/button';
@@ -51,7 +52,7 @@ export function TaskItem({ task, onToggle, onDelete }: TaskItemProps) {
           </div>
           
           <Button
-            variant="danger"
+            variant="destructive"
             size="sm"
             onClick={() => onDelete(task.id)}
             className="p-1 opacity-0 group-hover:opacity-100 transition-opacity"

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { TaskFilter as TaskFilterType } from '@/types/task';
 import { Button } from '@/components/ui/button';
@@ -24,7 +25,7 @@ export function TaskFilter({ currentFilter, onFilterChange, taskCounts }: TaskFi
       {filters.map(({ key, label, count }) => (
         <Button
           key={key}
-          variant={currentFilter === key ? 'primary' : 'secondary'}
+          variant={currentFilter === key ? 'default' : 'secondary'}
           size="sm"
           onClick={() => onFilterChange(key)}
           className="flex items-center space-x-2"

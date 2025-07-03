@@ -155,7 +155,7 @@ export function ApiDataDisplay() {
                     return (
                       <Button
                         key={actualPage}
-                        variant={currentPage === actualPage ? 'primary' : 'secondary'}
+                        variant={currentPage === actualPage ? 'default' : 'secondary'}
                         size="sm"
                         onClick={() => handlePageChange(actualPage)}
                       >
