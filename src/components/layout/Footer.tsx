@@ -10,7 +10,7 @@ export function Footer() {
           <div className="flex flex-col space-y-4">
             <div className="flex items-center space-x-2">
               <CheckSquare className="h-6 w-6 text-primary" />
-              <span className="text-lg font-semibold">TaskMaster</span>
+              <span className="text-lg font-semibold">TaskCommander</span>
             </div>
             <p className="text-muted-foreground text-sm max-w-sm">
               A powerful task management application built with React, TypeScript, and Tailwind CSS.
@@ -39,12 +39,10 @@ export function Footer() {
         <div className="mt-8 pt-8 border-t border-border">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-muted-foreground text-sm">
-              © 2024 TaskMaster. All rights reserved.
+              © 2024 TaskCommander. All rights reserved.
             </p>
             <p className="text-muted-foreground text-sm flex items-center space-x-1">
-              <span>Made with</span>
-              <Heart className="h-4 w-4 text-red-500 fill-current" />
-              <span>using React & Tailwind CSS</span>
+              <span>Made by using React & Tailwind CSS</span>
             </p>
           </div>
         </div>

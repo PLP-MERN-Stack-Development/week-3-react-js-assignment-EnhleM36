@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { useApi } from '@/hooks/useApi';
 import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
@@ -13,11 +12,12 @@ interface Post {
 }
 
 const POSTS_PER_PAGE = 6;
+const TOTAL_POSTS_LIMIT = 12; // Fetch only 12 posts
 
 export function ApiDataDisplay() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const { data: posts, loading, error } = useApi<Post[]>('https://jsonplaceholder.typicode.com/posts', searchQuery);
+  const { data: posts, loading, error } = useApi<Post[]>('https://jsonplaceholder.typicode.com/posts', searchQuery, TOTAL_POSTS_LIMIT);
 
   // Pagination logic
   const totalPosts = posts?.length || 0;
@@ -42,7 +42,7 @@ export function ApiDataDisplay() {
         <CardHeader>
           <CardTitle className="text-2xl font-bold">API Data Explorer</CardTitle>
           <p className="text-muted-foreground">
-            Explore posts fetched from JSONPlaceholder API with search and pagination.
+            Explore 12 posts fetched from JSONPlaceholder API with search and pagination.
           </p>
         </CardHeader>
         <CardContent className="space-y-6">
@@ -143,27 +143,21 @@ export function ApiDataDisplay() {
                   >
                     <ChevronLeft className="h-4 w-4" />
                   </Button>
-                  
-                  {[...Array(Math.min(5, totalPages))].map((_, i) => {
-                    const pageNum = i + 1;
-                    const actualPage = currentPage <= 3 ? pageNum : 
-                                     currentPage >= totalPages - 2 ? totalPages - 4 + pageNum :
-                                     currentPage - 2 + pageNum;
-                    
-                    if (actualPage > totalPages) return null;
-                    
-                    return (
+                  {Array.from({ length: totalPages }, (_, i) => i + 1)
+                    .slice(
+                      Math.max(0, Math.min(currentPage - 3, totalPages - 5)),
+                      Math.max(0, Math.min(currentPage - 3, totalPages - 5)) + Math.min(5, totalPages)
+                    )
+                    .map((pageNum) => (
                       <Button
-                        key={actualPage}
-                        variant={currentPage === actualPage ? 'default' : 'secondary'}
+                        key={pageNum}
+                        variant={currentPage === pageNum ? 'default' : 'secondary'}
                         size="sm"
-                        onClick={() => handlePageChange(actualPage)}
+                        onClick={() => handlePageChange(pageNum)}
                       >
-                        {actualPage}
+                        {pageNum}
                       </Button>
-                    );
-                  })}
-                  
+                    ))}
                   <Button
                     variant="secondary"
                     size="sm"

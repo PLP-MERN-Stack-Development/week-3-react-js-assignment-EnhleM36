@@ -13,10 +13,10 @@ const Index = () => {
         {/* Hero Section */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
-            Welcome to TaskMaster
+            Welcome to TaskCommander
           </h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            A powerful task management application with API integration, built with React, TypeScript, and Tailwind CSS.
+           A smart, easy-to-use app that helps you organize, prioritize, and complete your daily tasks efficiently."
           </p>
           <div className="flex justify-center">
             <Link to="/api-explorer">

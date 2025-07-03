@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 
 export interface ApiState<T> {
@@ -7,7 +6,7 @@ export interface ApiState<T> {
   error: string | null;
 }
 
-export function useApi<T>(url: string, searchQuery?: string) {
+export function useApi<T>(url: string, searchQuery?: string, limit?: number) {
   const [state, setState] = useState<ApiState<T>>({
     data: null,
     loading: true,
@@ -32,6 +31,11 @@ export function useApi<T>(url: string, searchQuery?: string) {
             item.body?.toLowerCase().includes(searchQuery.toLowerCase())
           );
         }
+
+        // Limit data if limit is provided
+        if (limit && Array.isArray(data)) {
+          data = data.slice(0, limit);
+        }
         
         setState({ data, loading: false, error: null });
       } catch (error) {
@@ -44,7 +48,7 @@ export function useApi<T>(url: string, searchQuery?: string) {
     };
 
     fetchData();
-  }, [url, searchQuery]);
+  }, [url, searchQuery, limit]);
 
   return state;
 }
