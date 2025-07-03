@@ -1,8 +1,9 @@
 
 import React from 'react';
 import { useTheme } from '@/contexts/ThemeContext';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { CheckSquare, Sun, Moon, Menu } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface NavbarProps {
   onMobileMenuToggle?: () => void;
@@ -17,19 +18,19 @@ export function Navbar({ onMobileMenuToggle }: NavbarProps) {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center space-x-3">
             <CheckSquare className="h-8 w-8 text-primary" />
-            <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
+            <Link to="/" className="text-xl font-bold bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">
               TaskMaster
-            </h1>
+            </Link>
           </div>
           
           <div className="hidden md:flex items-center space-x-4">
             <nav className="flex space-x-6">
-              <a href="#tasks" className="text-foreground/80 hover:text-foreground transition-colors font-medium">
-                Tasks
-              </a>
-              <a href="#api-data" className="text-foreground/80 hover:text-foreground transition-colors font-medium">
-                Posts
-              </a>
+              <Link to="/" className="text-foreground/80 hover:text-foreground transition-colors font-medium">
+                Home
+              </Link>
+              <Link to="/api-explorer" className="text-foreground/80 hover:text-foreground transition-colors font-medium">
+                API Explorer
+              </Link>
             </nav>
           </div>
 

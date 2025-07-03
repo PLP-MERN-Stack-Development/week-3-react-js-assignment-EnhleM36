@@ -2,7 +2,9 @@
 import React from 'react';
 import { Layout } from '@/components/layout/Layout';
 import { TaskManager } from '@/components/tasks/TaskManager';
-import { ApiDataDisplay } from '@/components/api/ApiDataDisplay';
+import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom';
+import { ExternalLink } from 'lucide-react';
 
 const Index = () => {
   return (
@@ -16,13 +18,18 @@ const Index = () => {
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             A powerful task management application with API integration, built with React, TypeScript, and Tailwind CSS.
           </p>
+          <div className="flex justify-center">
+            <Link to="/api-explorer">
+              <Button variant="outline" className="flex items-center gap-2">
+                Explore API Data
+                <ExternalLink className="h-4 w-4" />
+              </Button>
+            </Link>
+          </div>
         </div>
 
         {/* Task Manager Section */}
         <TaskManager />
-
-        {/* API Data Section */}
-        <ApiDataDisplay />
       </div>
     </Layout>
   );

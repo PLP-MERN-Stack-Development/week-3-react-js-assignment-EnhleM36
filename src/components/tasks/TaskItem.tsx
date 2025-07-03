@@ -1,9 +1,8 @@
-
 import React from 'react';
-import { Card, CardContent } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
 import { Task } from '@/types/task';
-import { Check, Trash2 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { Check, X, Trash2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 interface TaskItemProps {

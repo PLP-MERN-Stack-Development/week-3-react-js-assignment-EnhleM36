@@ -1,8 +1,8 @@
 
 import React, { useState, useMemo } from 'react';
 import { useApi } from '@/hooks/useApi';
-import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/Card';
-import { Button } from '@/components/ui/Button';
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface Post {

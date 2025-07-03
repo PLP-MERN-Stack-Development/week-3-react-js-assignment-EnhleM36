@@ -1,7 +1,6 @@
-
 import React from 'react';
-import { Button } from '@/components/ui/Button';
 import { TaskFilter as TaskFilterType } from '@/types/task';
+import { Button } from '@/components/ui/button';
 
 interface TaskFilterProps {
   currentFilter: TaskFilterType;

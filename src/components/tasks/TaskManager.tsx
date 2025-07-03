@@ -1,15 +1,14 @@
-
 import React, { useState, useEffect } from 'react';
-import { Task, TaskFilter as TaskFilterType } from '@/types/task';
-import { useLocalStorage } from '@/hooks/useLocalStorage';
+import { Task, TaskFilter } from '@/types/task';
+import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/card';
 import { TaskForm } from './TaskForm';
 import { TaskItem } from './TaskItem';
-import { TaskFilter } from './TaskFilter';
-import { Card, CardHeader, CardContent, CardTitle } from '@/components/ui/Card';
+import { TaskFilter as TaskFilterComponent } from './TaskFilter';
+import { useLocalStorage } from '@/hooks/useLocalStorage';
 
 export function TaskManager() {
   const [tasks, setTasks] = useLocalStorage<Task[]>('tasks', []);
-  const [filter, setFilter] = useState<TaskFilterType>('all');
+  const [filter, setFilter] = useState<TaskFilter>('all');
 
   const addTask = (title: string, description: string) => {
     const newTask: Task = {
@@ -64,7 +63,7 @@ export function TaskManager() {
           <TaskForm onSubmit={addTask} />
           
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <TaskFilter
+            <TaskFilterComponent
               currentFilter={filter}
               onFilterChange={setFilter}
               taskCounts={taskCounts}
