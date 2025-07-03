@@ -13,11 +13,12 @@ interface Post {
 }
 
 const POSTS_PER_PAGE = 6;
+const TOTAL_POSTS_LIMIT = 12; // Fetch only 12 posts
 
 export function ApiDataDisplay() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const { data: posts, loading, error } = useApi<Post[]>('https://jsonplaceholder.typicode.com/posts', searchQuery);
+  const { data: posts, loading, error } = useApi<Post[]>('https://jsonplaceholder.typicode.com/posts', searchQuery, TOTAL_POSTS_LIMIT);
 
   // Pagination logic
   const totalPosts = posts?.length || 0;
@@ -42,7 +43,7 @@ export function ApiDataDisplay() {
         <CardHeader>
           <CardTitle className="text-2xl font-bold">API Data Explorer</CardTitle>
           <p className="text-muted-foreground">
-            Explore posts fetched from JSONPlaceholder API with search and pagination.
+            Explore 12 posts fetched from JSONPlaceholder API with search and pagination.
           </p>
         </CardHeader>
         <CardContent className="space-y-6">

@@ -7,7 +7,7 @@ export interface ApiState<T> {
   error: string | null;
 }
 
-export function useApi<T>(url: string, searchQuery?: string) {
+export function useApi<T>(url: string, searchQuery?: string, limit?: number) {
   const [state, setState] = useState<ApiState<T>>({
     data: null,
     loading: true,
@@ -19,7 +19,9 @@ export function useApi<T>(url: string, searchQuery?: string) {
       setState(prev => ({ ...prev, loading: true, error: null }));
       
       try {
-        const response = await fetch(url);
+        // Add limit parameter to URL if provided
+        const fetchUrl = limit ? `${url}?_limit=${limit}` : url;
+        const response = await fetch(fetchUrl);
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -44,7 +46,7 @@ export function useApi<T>(url: string, searchQuery?: string) {
     };
 
     fetchData();
-  }, [url, searchQuery]);
+  }, [url, searchQuery, limit]);
 
   return state;
 }
