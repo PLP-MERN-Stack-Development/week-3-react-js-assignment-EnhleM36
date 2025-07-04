@@ -28,7 +28,7 @@ TaskCommander is a modern, responsive task manager app built with **React**, **V
 
 ---
 
-## 📁 Project Structure
+```## 📁 Project Structure
 
 src/
 ├── components/       # Reusable UI components (Button, Card, Layout, etc.)
@@ -42,3 +42,4 @@ src/
 ├── index.css         # Tailwind base and custom styles
 tailwind.config.js    # Tailwind configuration
 vite.config.js        # Vite setup
+```
