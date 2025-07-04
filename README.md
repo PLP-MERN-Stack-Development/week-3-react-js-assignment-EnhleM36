@@ -43,3 +43,6 @@ src/
 tailwind.config.js    # Tailwind configuration
 vite.config.js        # Vite setup
 ```
+
+![Screenshot 2025-07-04 100546](https://github.com/user-attachments/assets/acbe1d8d-ea1f-42e5-873c-213e57463a91)
+
